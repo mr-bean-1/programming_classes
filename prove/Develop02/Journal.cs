@@ -25,7 +25,7 @@ public class Journal {
         entries.Clear();
         try {
             if (!File.Exists(journal_entries)) {
-                throw new FileNotFoundException("The specified file does not exist.");
+                throw new FileNotFoundException("File not found.");
             }
 
             using (StreamReader reader = new StreamReader(journal_entries)) {
@@ -51,7 +51,7 @@ public class Journal {
             }
         } catch (Exception ex)
          {
-            Console.WriteLine($"Error loading file: {ex.Message}");
+            Console.WriteLine($"No file found: {ex.Message}");
         }
     }
 
