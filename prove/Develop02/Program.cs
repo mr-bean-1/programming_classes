@@ -4,12 +4,10 @@ public class Program
 {
     static void Main(string[] args)
     {
-        // created a filepath for user to enter journal into as well as adding and loading it 
+        // create filepath for user to enter journal into as well as adding and loading it 
         Journal journal = new Journal();
         string filePath = "journal-entries.txt";
         journal.LoadFromFile(filePath);
-        journal.AddEntry("Sample prompt", "Sample Response");
-        journal.SaveToFile(filePath);
 
         bool running = true; 
         Console.WriteLine("Welcome to the Journal Program");
@@ -17,10 +15,11 @@ public class Program
 
     while (running){
         Console.WriteLine("1. Write");
-        Console.WriteLine("2. Display");
+        Console.WriteLine("2.  Display");
         Console.WriteLine("3. Load");
         Console.WriteLine("4. Save");
-        Console.WriteLine("5. Quit");
+        Console.WriteLine("5. Inspirational Quote");
+        Console.WriteLine("6. Quit");
         string answer = Console.ReadLine();
        
 
@@ -29,6 +28,7 @@ public class Program
         switch (answer){
                 case "1":
                     Console.WriteLine("Your choice is 1");
+                    // write entry 
                     string prompt = PromptGenerator.GetRandomPrompt();
                     Console.WriteLine($"Prompt: {prompt}");
                     Console.Write("Enter your response: ");
@@ -62,8 +62,15 @@ public class Program
 
 
             break; 
-// quit program switch 
+
             case "5":
+                Console.WriteLine("Your choice is 5");
+                string randomQuote = Quote.GetRandomQuote();
+                Console.WriteLine(randomQuote);
+                break; 
+               
+// quit program switch 
+            case "6":
             running = false; 
             break;
 
