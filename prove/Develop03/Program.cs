@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-
+// for the exceeding requirements portion of the program I made a random list of articles of faith to memorize.
 class Program
 {
     static void Main(string[] args)
