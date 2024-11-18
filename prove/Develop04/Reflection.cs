@@ -1,11 +1,8 @@
 using System.Security.Cryptography.X509Certificates;
 
 class Reflection{
-    public void reflection_activity(){
-        // reflection
-        Console.WriteLine("This activity will help you reflect on times in your life when you have shown strength and resilience. THis will help yo urecognize the power you have and how you can use it in other aspects of your life");
-        
-          List<string> reflection_prompts = new List<string>
+
+        List<string> reflection_prompts = new List<string>
         {
             "Think of a time when you stood up for someone else.",
             "Think of a time when you did something really difficult.",
@@ -28,46 +25,58 @@ class Reflection{
             "What did you learn about yourself through this experience?",
             "How can you keep this experience in mind in the future?",
         };
-
-
+    public void reflection_activity(){
+        // reflection
+    
+        Console.WriteLine("Welcome to the reflecting activity.");
+        Console.WriteLine("This activity will help you reflect on times in your life when you have shown strength and resilience. THis will help yo urecognize the power you have and how you can use it in other aspects of your life");
+        Console.WriteLine("How long, in seconds, do you want this activity to run?");
+        string reflection_seconds_input = Console.ReadLine();
+        int reflection_seconds;
         
+        if (!int.TryParse(reflection_seconds_input, out reflection_seconds) || reflection_seconds <= 0){
+        Console.WriteLine("Invalid input. Please enter a valid number.");
+        return; }
+        Console.WriteLine("Consider the following prompt:");
+        DisplayPrompt();
 
-        // Random random = new Random();
-        // int index = random.Next(reflection_prompts.Count);
-        // int index = random.Next(prompt_reflections.Count);
-        
-        // return reflection_prompts[index];
-        // return prompt_reflections[index];
+        int timeRemaining = reflection_seconds - 10; 
+        CountDown(10);
+
+        Random random = new Random();
+        while (timeRemaining > 0){
+            DisplayQuestion(random);
+            timeRemaining -= 5; 
+            CountDown(5);
+        }
+        Console.WriteLine("Reflection activity complete.");
 
 
     }
     public void DisplayPrompt(){
-        int randomIndex = new Random().Next(0, _reflection_prompts.Count());
-        Console.WriteLine(_reflection_prompts[randomIndex]);
+        Random random = new Random();
+        int randomIndex = random.Next(reflection_prompts.Count);
+
+        Console.WriteLine(reflection_prompts[randomIndex]);
     }
 
 
-   public void DisplayQuestions()
-    {
-        List<int> indexes = new List<int>();
+   public void DisplayQuestion(Random random)
+    { 
+        int randomIndex = random.Next(prompt_reflections.Count);
+        Console.WriteLine(prompt_reflections[randomIndex]);
 
-        for (int i = 0; i < 4; i++)
-        {
-            int randomInt = new Random().Next(0, _prompt_reflections.Count());
-            while (indexes.Contains(randomInt))
-            {
-                randomInt = new Random().Next(0, _prompt_reflections.Count());
-            }
-            indexes.Add(randomInt);
+    }
+
+
+  private void CountDown(int seconds){
+        for (int i= seconds; i >0; i--){
+            Console.Write(i + " ");
+            Thread.Sleep(1000);
+            Console.Write("\b \b");
         }
-
-
-
-
-
-
-
-
+        
+    }
 
 
 
@@ -90,3 +99,10 @@ class Reflection{
 
 
 }
+
+
+
+
+
+
+
