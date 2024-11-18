@@ -20,29 +20,28 @@ class Program
 
         while(running){
 
+
+// breathing activity
         switch (user_input){
             case "1":
-            // Random random = new Random(); 
-            // breathing.breathe_activity();
-            Console.WriteLine("Starting breathing activity.");
+            Breathing breathingActivity = new Breathing();
+            breathingActivity.breathe_activity();
             break; 
         
-
+// reflection activity
             case "2":
-            // Random random = new Random(); 
-
-            // reflection.reflection_activity();
-            // Reflection.prompt_reflections();
-            Console.WriteLine("Starting reflection activity.");
+          
+            Reflection reflection = new Reflection();
+            reflection.reflection_activity();
 
             break; 
 
-    
+// listing activity
         case "3":
       
-            // Random random = new Random(); 
-            // Listing.listing_activity();
-            Console.WriteLine("Starting breathing activity.");
+            Listing listing = new Listing();
+            listing.listing_activity();
+          
 
             break; 
 
@@ -60,7 +59,7 @@ class Program
             if (running)
             {
                 Console.WriteLine("\nPress Enter to continue or type quit to finish the program");
-                user_input = Console.ReadLine();  // Update user_input after each loop
+                user_input = Console.ReadLine(); 
             }
         }
     }
