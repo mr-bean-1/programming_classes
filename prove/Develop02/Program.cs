@@ -1,5 +1,5 @@
 using System;
-
+// to exceed the requirements this program has the option to display an inspiration quote whenever the user would like 
 public class Program
 {
     static void Main(string[] args)
@@ -29,7 +29,7 @@ public class Program
                 case "1":
                     Console.WriteLine("Your choice is 1");
                     // write entry 
-                    string prompt = PromptGenerator.GetRandomPrompt();
+                    string prompt = Prompt.GetRandomPrompt();
                     Console.WriteLine($"Prompt: {prompt}");
                     Console.Write("Enter your response: ");
                     string response = Console.ReadLine();
@@ -82,21 +82,5 @@ public class Program
     }
 }
              
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
