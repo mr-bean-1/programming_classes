@@ -1,5 +1,5 @@
-using System.Security.Cryptography.X509Certificates;
-
+using System; 
+using System.Collections.Generic; 
 class Reflection{
 
         List<string> reflection_prompts = new List<string>
@@ -16,48 +16,54 @@ class Reflection{
         List<string> prompt_reflections = new List<string>{
             "Why was this experience meaningful to you?", 
             "Have you ever done anything like this before?", 
-            "How did you get started", 
+            "How did you get started?", 
             "How did you feel when it was complete?",
-            "What made this tiem different than other times when you were not as successful?",
+            "What made this time different than other times when you were not as successful?",
             "What is your favorite thing about this experience?",
             "What could you learn from this experience that applies to other situations?",
             "What did you learn about yourself through this experience that applies to other situations?",
             "What did you learn about yourself through this experience?",
             "How can you keep this experience in mind in the future?",
         };
+
     public void reflection_activity(){
         // reflection
     
-        Console.WriteLine("Welcome to the reflecting activity.");
-        Console.WriteLine("This activity will help you reflect on times in your life when you have shown strength and resilience. THis will help yo urecognize the power you have and how you can use it in other aspects of your life");
+        Console.WriteLine("Welcome to the reflection activity.\n");
+        Console.WriteLine("This activity will help you reflect on times in your life when you have shown strength and resilience. THis will help you recognize the power you have and how you can use it in other aspects of your life. \n");
         Console.WriteLine("How long, in seconds, do you want this activity to run?");
+
         string reflection_seconds_input = Console.ReadLine();
         int reflection_seconds;
         
         if (!int.TryParse(reflection_seconds_input, out reflection_seconds) || reflection_seconds <= 0){
         Console.WriteLine("Invalid input. Please enter a valid number.");
         return; }
+        Console.WriteLine("Get ready...");
         Console.WriteLine("Consider the following prompt:");
-        DisplayPrompt();
+        DisplayPrompt(reflection_prompts);
+        Console.WriteLine("When you have something in mind, press Enter to continue.");
+        Console.ReadLine();
 
-        int timeRemaining = reflection_seconds - 10; 
-        CountDown(10);
+        int timeRemaining = reflection_seconds; 
 
         Random random = new Random();
         while (timeRemaining > 0){
+            Console.Clear();
             DisplayQuestion(random);
+            Thread.Sleep(5000);
+          
             timeRemaining -= 5; 
-            CountDown(5);
         }
         Console.WriteLine("Reflection activity complete.");
 
 
     }
-    public void DisplayPrompt(){
+    public void DisplayPrompt(List<string> prompts){
         Random random = new Random();
-        int randomIndex = random.Next(reflection_prompts.Count);
+        int randomIndex = random.Next(prompts.Count);
 
-        Console.WriteLine(reflection_prompts[randomIndex]);
+        Console.WriteLine(prompts[randomIndex]);
     }
 
 
@@ -69,14 +75,7 @@ class Reflection{
     }
 
 
-  private void CountDown(int seconds){
-        for (int i= seconds; i >0; i--){
-            Console.Write(i + " ");
-            Thread.Sleep(1000);
-            Console.Write("\b \b");
-        }
-        
-    }
+
 
 
 
