@@ -1,3 +1,5 @@
+using System.Data;
+
 class Listing{
 
     public void listing_activity(){
@@ -11,11 +13,13 @@ class Listing{
             "Who are some of your personal heroes?",
         };
 
-        Console.WriteLine("This activity will help you reflect on the good things in your life by having you list as many things as you can in a certain area.");
-        Console.WriteLine("How long, in seconds, would you like to list?");
+        Console.WriteLine("Welcome to the Listing Activity\n");
+        Console.WriteLine("This activity will help you reflect on the good things in your life by having you list as many things as you can in a certain area.\n");
+        Console.WriteLine("How long, in seconds, would you like this activity to run? ");
         
         string list_time_input = Console.ReadLine();
         int list_time; 
+        // Console.WriteLine("Get ready...");
 
          if (!int.TryParse(list_time_input, out list_time) || list_time <= 0)
         {
@@ -45,7 +49,7 @@ class Listing{
         // Start the activity
         while (DateTime.Now < endTime)
         {
-            Console.Write("Enter a response (or press Enter to stop): ");
+            Console.Write("Enter a response(s): ");
             string response = Console.ReadLine();
 
             // If the user presses Enter without entering anything, we stop early
@@ -59,7 +63,9 @@ class Listing{
         }
 
         // Show how many responses were collected
-        Console.WriteLine($"\nTime is up! You listed {responses.Count} responses.");
+        Console.WriteLine($"\nYou listed {responses.Count} items.\n");
+        Console.WriteLine("Well done!!");
+        Console.WriteLine($"You have completed another {seconds} seconds of the Listing Activity!");
         Console.WriteLine("Here are your responses:");
         
         foreach (var response in responses)
