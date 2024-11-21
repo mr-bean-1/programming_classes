@@ -1,25 +1,30 @@
 using System;
 using System.Formats.Asn1;
-
+// to exceed requirements in the listing class after user lists the program will display their entries. 
 class Program
 {
     static void Main(string[] args)
     {
         Console.Clear();
         Console.WriteLine("Welcome to the relaxation program.");
-        Console.WriteLine("What activity would you like to do? ");
-        Console.WriteLine("1. Breathing activity");
-        Console.WriteLine("2. Reflection activity");
-        Console.WriteLine("3. Listing activity");
-        Console.WriteLine("4. Quit");
-        Console.WriteLine("Enter number: ");
-        string user_input = Console.ReadLine();
-        Console.WriteLine("\nPress Enter to continue or type quit to finish the program");
         bool running = true;
 
 
         while(running){
 
+            Console.WriteLine("What activity would you like to do? ");
+            Console.WriteLine("1. Breathing activity");
+            Console.WriteLine("2. Reflection activity");
+            Console.WriteLine("3. Listing activity");
+            Console.WriteLine("4. Quit");
+            Console.WriteLine("Enter number: ");
+            string user_input = Console.ReadLine();
+            Console.WriteLine("\nPress Enter to continue or type quit to finish the program");
+            if (user_input == "4"){
+                Console.WriteLine("Quitting the program.");
+                running = false; 
+                break; 
+            }
 
 // breathing activity
         switch (user_input){
@@ -45,21 +50,18 @@ class Program
 
             break; 
 
-        
-        case "4":
-                    Console.WriteLine("Quitting the program...");
-                    running = false;
-                    break;
 
-                default:
-                    Console.WriteLine("Invalid input. Please try again.");
-                    break;
+            default:
+                Console.WriteLine("Invalid input. Please try again.");
+                break;
             }
 
-            if (running)
+              Console.WriteLine("\nPress Enter to continue or type 'quit' to finish the program.");
+            string continueInput = Console.ReadLine().ToLower();
+
+            if (continueInput == "quit")
             {
-                Console.WriteLine("\nPress Enter to continue or type quit to finish the program");
-                user_input = Console.ReadLine(); 
+                running = false;
             }
         }
     }
