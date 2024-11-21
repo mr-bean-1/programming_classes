@@ -25,7 +25,7 @@ public class Journal {
         entries.Clear();
         try {
             if (!File.Exists(journal_entries)) {
-                throw new FileNotFoundException("File not found.");
+                Console.WriteLine("File not found.");
             }
 
             using (StreamReader reader = new StreamReader(journal_entries)) {
@@ -34,9 +34,10 @@ public class Journal {
                 string currentPrompt = null; 
 
                 string currentResponse = null; 
-                DateTime currentDate = DateTime.MinValue; 
+                DateTime currentDate = DateTime.Now; 
 
                 while ((line = reader.ReadLine()) != null) {
+
                     if (line.StartsWith("Date: ")) {
                         currentDate = DateTime.Parse(line.Substring("Date: ".Length));
                     } else if (line.StartsWith("Prompt: ")) {
@@ -51,7 +52,7 @@ public class Journal {
             }
         } catch (Exception ex)
          {
-            Console.WriteLine($"No file found: {ex.Message}");
+            Console.WriteLine($"Couldn't load file: {ex.Message}");
         }
     }
 
