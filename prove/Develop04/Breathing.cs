@@ -6,8 +6,8 @@ class Breathing{
     public void breathe_activity(){
 
         Console.WriteLine("Welcome to the breathing activity.");
-        Console.WriteLine("This activity will help you relax by walking you through breathing in and out slowly. clear your mind and focus on your breathing.");
-        Console.WriteLine("How long, in seconds, would you like to breathe for your session? ");
+        Console.WriteLine("\nThis activity will help you relax by walking you through breathing in and out slowly. clear your mind and focus on your breathing.");
+        Console.WriteLine("\nHow long, in seconds, would you like to breathe for your session? ");
         
         string user_time_input = Console.ReadLine();
         int user_time; 
@@ -20,7 +20,7 @@ class Breathing{
         Console.WriteLine("Invalid input. Please enter a valid number.");
         return; 
     }
-    Console.WriteLine($"breathing in for {user_time} seconds.");
+    Console.WriteLine($"Get ready...");
     int cycles = user_time / 8; 
 
     for (int cycle =1; cycle <= cycles; cycle ++){
@@ -28,9 +28,11 @@ class Breathing{
         CountDown(4);
         Console.WriteLine("Breathe out...");
         CountDown(4);
+        Console.WriteLine();
 
     }
-    Console.WriteLine("you finished the activity. ");
+    Console.WriteLine("Well done!!");
+    Console.WriteLine($"You have completed another {user_time} seconds of the Breathing activity. ");
 
     }
 
