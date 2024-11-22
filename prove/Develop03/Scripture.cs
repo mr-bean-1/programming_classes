@@ -26,6 +26,7 @@
 
 
 using System;
+using System.Collections.Generic; 
 class Scripture{
     private Reference _reference; 
     private List<Word> _words; 
@@ -46,13 +47,14 @@ class Scripture{
 
         Console.WriteLine($"{_reference}:");
         foreach (Word word in _words){
-            if (word.IsHidden()){
+            if (word.IsHide()){
                 Console.Write(new string('_', word.GetText().Length) + "");
             }
             else{
                 Console.Write(word.GetText() + " ");
             }
         }
+        Console.WriteLine();
 
     }
 
@@ -70,7 +72,7 @@ class Scripture{
 
         }
 
-        while (randomIndex1== randomIndex2);
+        while (randomIndex1 == randomIndex2);
 
         visibleWords[randomIndex1].Hide();
         visibleWords[randomIndex2].Hide();
@@ -89,56 +91,6 @@ class Scripture{
         return visibleWords; 
 
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
