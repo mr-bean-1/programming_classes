@@ -1,8 +1,8 @@
 using System; 
 using System.Collections.Generic; 
-class Reflection{
 
-        List<string> reflection_prompts = new List<string>
+class Reflection : Activity{
+  List<string> reflectionPrompts = new List<string>
         {
             "Think of a time when you stood up for someone else.",
             "Think of a time when you did something really difficult.",
@@ -10,10 +10,9 @@ class Reflection{
             "Think of a time when you did something truly selfless.",
         
         };
-    
 
-
-        List<string> prompt_reflections = new List<string>{
+         
+        List<string> promptReflections = new List<string>{
             "Why was this experience meaningful to you?", 
             "Have you ever done anything like this before?", 
             "How did you get started?", 
@@ -26,78 +25,74 @@ class Reflection{
             "How can you keep this experience in mind in the future?",
         };
 
-    public void reflection_activity(){
-        // reflection
-    
-        Console.WriteLine("Welcome to the reflection activity.\n");
-        Console.WriteLine("This activity will help you reflect on times in your life when you have shown strength and resilience. THis will help you recognize the power you have and how you can use it in other aspects of your life. \n");
-        Console.WriteLine("How long, in seconds, do you want this activity to run?");
+    protected override void StartActivity(int time)
+    {
+        Console.WriteLine("Welcome to the reflection acticity");
+        Console.WriteLine("This activity will help you reflect on times when you have shown strength and resilience.");
 
-        string reflection_seconds_input = Console.ReadLine();
-        int reflection_seconds;
-        
-        if (!int.TryParse(reflection_seconds_input, out reflection_seconds) || reflection_seconds <= 0){
-        Console.WriteLine("Invalid input. Please enter a valid number.");
-        return; }
-        Console.WriteLine("Get ready...");
-        Console.WriteLine("Consider the following prompt:");
-        DisplayPrompt(reflection_prompts);
-        Console.WriteLine("When you have something in mind, press Enter to continue.");
-        Console.ReadLine();
+        int timeRemaining = time; 
 
-        int timeRemaining = reflection_seconds; 
+        Console.Clear();
+        DisplayRandomPrompt();
+        Console.WriteLine("When you have something in mind, press enter. ");
+        System.Threading.Thread.Sleep(5000);
 
+        timeRemaining -= 5; 
         Random random = new Random();
-        while (timeRemaining > 0){
+        DateTime endTime = DateTime.Now.AddSeconds(timeRemaining);
+
+
+        while (DateTime.Now < endTime && promptReflections.Count > 0)
+        {
+            // Display the prompt
             Console.Clear();
-            DisplayQuestion(random);
-            Thread.Sleep(5000);
-          
-            timeRemaining -= 5; 
+            DisplayFollowUpPrompt(random);
+            System.Threading.Thread.Sleep(5000);  
+            if (DateTime.Now >= endTime)
+            {
+                break;
+            }
         }
-        Console.WriteLine("Reflection activity complete.");
+
+        Console.Clear();
+        Console.WriteLine("Reflection activity complete");
 
 
+        
     }
-    public void DisplayPrompt(List<string> prompts){
+
+  private void DisplayRandomPrompt()
+    {
         Random random = new Random();
-        int randomIndex = random.Next(prompts.Count);
-
-        Console.WriteLine(prompts[randomIndex]);
+        int randomIndex = random.Next(reflectionPrompts.Count);
+        Console.WriteLine(reflectionPrompts[randomIndex]);
     }
 
-
-   public void DisplayQuestion(Random random)
-    { 
-        int randomIndex = random.Next(prompt_reflections.Count);
-        Console.WriteLine(prompt_reflections[randomIndex]);
-
+    // Method to display a random follow-up prompt from the promptReflections list
+    private void DisplayFollowUpPrompt(Random random)
+    {
+        int randomIndex = random.Next(promptReflections.Count);
+        Console.WriteLine(promptReflections[randomIndex]);
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
