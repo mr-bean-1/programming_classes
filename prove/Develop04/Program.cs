@@ -26,46 +26,35 @@ class Program
                 break; 
             }
 
-// breathing activity
-        switch (user_input){
-            case "1":
-            Breathing breathingActivity = new Breathing();
-            breathingActivity.breathe_activity();
-            break; 
-        
-// reflection activity
-            case "2":
-          
-            Reflection reflection = new Reflection();
-            reflection.reflection_activity();
-
-            break; 
-
-// listing activity
-        case "3":
-      
-            Listing listing = new Listing();
-            listing.listing_activity();
-          
-
-            break; 
-
-
-            default:
-                Console.WriteLine("Invalid input. Please try again.");
-                break;
-            }
-
-              Console.WriteLine("\nPress Enter to continue or type 'quit' to finish the program.");
-            string continueInput = Console.ReadLine().ToLower();
-
-            if (continueInput == "quit")
+           Activity activity = user_input switch
             {
-                running = false;
+                "1" => new Breathing(),
+                "2" => new Reflection(),
+                "3" => new Listing(),
+                _ => null
+            };
+
+            if (activity != null)
+            {
+                activity.RunActivity();
+            }
+            else
+            {
+                Console.WriteLine("Invalid input. Please try again.");
             }
         }
     }
 }
+
+
+
+
+
+
+
+
+
+
 
 
 
