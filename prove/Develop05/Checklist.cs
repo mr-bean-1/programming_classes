@@ -1,24 +1,50 @@
-using System; 
-class Checklist : Goal{
 
+public class Checklist : Goal
+{
+    private int TimesToComplete;
+    private int BonusPoints;
+    private int CompletedTimes;
 
-   static void checklister(){
-        
-        Console.WriteLine("What is the name of your goal?");
-        Console.WriteLine("What is a short description of your goal?");
-        Console.WriteLine("What is the amount of points associated with this goal?");
-        Console.WriteLine("How many times does this goal need to be completed to get a bonus? ");
-        Console.WriteLine("What is the point bonus for finishing it that many times?");
-        Console.WriteLine("You have _ points");
-
-
-
+    public Checklist(string name, string description, int points, int timesToComplete, int bonusPoints)
+        : base(name, description, points)
+    {
+        this.TimesToComplete = timesToComplete;
+        this.BonusPoints = bonusPoints;
+        this.CompletedTimes = 0;
     }
 
+    public void MarkComplete()
+    {
+        if (CompletedTimes < TimesToComplete)
+        {
+            CompletedTimes++;
+            Console.WriteLine($"You earned {Points} points for this completion.");
+            if (CompletedTimes == TimesToComplete)
+            {
+                Console.WriteLine($"You've earned a bonus of {BonusPoints} points!");
+            }
+        }
+        else
+        {
+            Console.WriteLine($"Goal '{Name}' is fully completed.");
+        }
+    }
 
+    public override void DisplayGoalInfo()
 
+    {
+        string completionStatus = CompletedTimes == TimesToComplete ? "[X]" : "[ ]";
+        Console.WriteLine($"Checklist Goal: {Name} (Completed: {CompletedTimes}/{TimesToComplete})");
+        Console.WriteLine($"Description: {Description}");
+        Console.WriteLine($"Points per completion: {Points}");
+        if (CompletedTimes == TimesToComplete)
+        {
+            Console.WriteLine($"Bonus points: {BonusPoints}");
+        }
+    }
 
-
-
-
+    public override string SaveGoalInfo()
+    {
+        return $"Checklist:{Name}, {Description}, {Points}, {TimesToComplete}, {BonusPoints}";
+    }
 }
