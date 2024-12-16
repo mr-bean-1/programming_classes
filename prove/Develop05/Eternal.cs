@@ -1,24 +1,24 @@
-using System; 
-
-class Eternal : Goal{
-
-
-   static void eternaler(){
-        
-        Console.WriteLine("What is the name of your goal?");
-        Console.WriteLine("What is a short description of your goal?");
-        Console.WriteLine("What is the amount of points associated with this goal?");
-        Console.WriteLine("You have _ points");
 
 
 
+public class Eternal : Goal
+{
+    public Eternal(string name, string description, int points)
+        : base(name, description, points)
+    {
     }
 
+    public override void DisplayGoalInfo()
+    {
+        Console.WriteLine($"Eternal Goal: {Name}");
+        Console.WriteLine($"Description: {Description}");
+        Console.WriteLine($"Points: {Points}");
+    }
 
-    
+    public override string SaveGoalInfo()
+    {
+        return $"Eternal:{Name}, {Description}, {Points}";
+    }
 }
-
-
-
 
 
