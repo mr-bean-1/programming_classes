@@ -1,46 +1,37 @@
-using System; 
+using System;
+public class Simple : Goal
+{
+    private bool IsCompleted;
 
-public class Simple : Goal{
-
-    //  ask user 
-    static void simpler(){
-        
-        Console.WriteLine("What is the name of your goal?");
-        Console.WriteLine("What is a short description of your goal?");
-        Console.WriteLine("What is the amount of points associated with this goal?");
-        Console.WriteLine("You have _ points");
-
-
-
+    public Simple(string name, string description, int points)
+        : base(name, description, points)
+    {
+        IsCompleted = false;
     }
-  
 
+    public void MarkComplete()
+    {
+        if (!IsCompleted)
+        {
+            IsCompleted = true;
+            Console.WriteLine($"Goal '{Name}' is marked as complete. You earned {Points} points.");
+        }
+        else
+        {
+            Console.WriteLine($"Goal '{Name}' is already completed.");
+        }
+    }
 
-    // Goal
-    // GetGoalName
-    // SetGoalName
-    // GetGoalDescription
-    // SetGoalDescription
-    // DispalyGoalPoints
-    // GetGoalPoints
-    // GetGoalStatus
-    // ToFile
-    // RecordEvent
-    // DisplayGoalName
-    // DisplayGoalDescription
+    public override void DisplayGoalInfo()
+    {
+        string completionStatus = IsCompleted ? "[X]" : "[]";
+        Console.WriteLine($"Simple Goal: {Name}");
+        Console.WriteLine($"Description: {Description}");
+        Console.WriteLine($"Points: {Points}");
+    }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    public override string SaveGoalInfo()
+    {
+        return $"Simple:{Name}, {Description}, {Points}";
+    }
 }
