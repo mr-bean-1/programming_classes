@@ -1,4 +1,4 @@
-// to exceed requirements I added the views for videos and likes for the comments and the videos :)
+// to exceed requirements I added the views for videos and likes and dislikes for the comments and the videos :)
 
 class Program
 {
@@ -16,11 +16,11 @@ class Program
         video1.SetViews(2000);       
         
         // video 1 comments 
-        Comment comment1 = new Comment("Maribel", "Nice one.", 10, 2); // 10 Likes, 2 Dislikes
+        Comment comment1 = new Comment("Maribel", "Nice one.", 10, 2); 
         video1.SetComment(comment1);
-        comment1 = new Comment("Hannah", "Very Enlightening!", 5, 1);  // 5 Likes, 1 Dislike
+        comment1 = new Comment("Hannah", "Very Enlightening!", 5, 1);  
         video1.SetComment(comment1);
-        comment1 = new Comment("Steve", "Now I won't trip!! Thanks bro!", 20, 0); // 20 Likes, 0 Dislikes
+        comment1 = new Comment("Steve", "Now I won't trip!! Thanks bro!", 20, 0); 
         video1.SetComment(comment1);
         videos.Add(video1);
 
@@ -36,7 +36,7 @@ class Program
         video2.SetComment(comment1);
         comment1 = new Comment("Lily", "I have a teddy bear also called 'Teddy!'", 8, 2);
         video2.SetComment(comment1);
-        comment1 = new Comment("Alistair", "Mr. Bean is the GOAT!", 25, 1); /
+        comment1 = new Comment("Alistair", "Mr. Bean is the GOAT!", 25, 1); 
         video2.SetComment(comment1);
         videos.Add(video2);
 
